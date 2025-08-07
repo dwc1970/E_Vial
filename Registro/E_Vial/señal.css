@@ -1,0 +1,172 @@
+/* Importar una fuente amigable para niños */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap");
+
+:root {
+  --color-bg-primary: #f0f4f8; /* Azul claro muy suave */
+  --color-bg-secondary: #ffffff; /* Blanco para el contenedor */
+  --color-text-primary: #333d42; /* Gris oscuro para el texto */
+  --color-preventiva: #f1c40f; /* Amarillo vibrante */
+  --color-reglamentaria: #e74c3c; /* Rojo */
+  --color-informativa: #3498db; /* Azul */
+  --color-correct: #2ecc71; /* Verde */
+  --color-incorrect: #e74c3c; /* Rojo */
+  --color-btn-bg: #2980b9;
+  --color-btn-text: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: "Fredoka", sans-serif;
+  background-color: var(--color-bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  text-align: center;
+  background-color: var(--color-bg-secondary);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px var(--color-shadow);
+  width: 90%;
+  max-width: 600px;
+}
+
+.game-title {
+  color: var(--color-text-primary);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.screen-message {
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.image-box {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--color-text-primary);
+  border-radius: 15px;
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+#sign-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  color: var(--color-btn-text);
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.category-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.category-btn[data-category="Preventiva"] {
+  background-color: var(--color-preventiva);
+}
+.category-btn[data-category="Reglamentaria"] {
+  background-color: var(--color-reglamentaria);
+}
+.category-btn[data-category="Informativa"] {
+  background-color: var(--color-informativa);
+}
+
+.category-btn.correct {
+  background-color: var(--color-correct) !important;
+}
+.category-btn.incorrect {
+  background-color: var(--color-incorrect) !important;
+}
+
+.feedback-message {
+  min-height: 40px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.control-btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+  margin: 0 5px;
+}
+
+.primary-btn {
+  background-color: var(--color-correct);
+  color: var(--color-btn-text);
+}
+
+.secondary-btn {
+  background-color: var(--color-reglamentaria);
+  color: var(--color-btn-text);
+}
+
+.control-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 500px) {
+  .game-container {
+    padding: 20px;
+  }
+  .categories-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .category-btn {
+    width: 100%;
+    max-width: none;
+  }
+  .game-title {
+    font-size: 2rem;
+  }
+}

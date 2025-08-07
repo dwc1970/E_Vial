@@ -1,0 +1,323 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #e6e9ed;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.game-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 25px;
+}
+
+h1#welcome-message {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #555;
+}
+
+.score-container span {
+  color: #3498db;
+}
+
+.game-area {
+  margin: 30px 0;
+}
+
+/* Ruleta */
+#roulette-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.roulette-wheel {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(
+    #3498db 0 5%,
+    #e74c3c 5% 10%,
+    #2ecc71 10% 15%,
+    #f1c40f 15% 20%,
+    #9b59b6 20% 25%,
+    #e67e22 25% 30%,
+    #34495e 30% 35%,
+    #c0392b 35% 40%,
+    #3498db 40% 45%,
+    #e74c3c 45% 50%,
+    #2ecc71 50% 55%,
+    #f1c40f 55% 60%,
+    #9b59b6 60% 65%,
+    #e67e22 65% 70%,
+    #34495e 70% 75%,
+    #c0392b 75% 80%,
+    #3498db 80% 85%,
+    #e74c3c 85% 90%,
+    #2ecc71 90% 95%,
+    #f1c40f 95% 100%
+  );
+  border-radius: 50%;
+  border: 8px solid #bdc3c7;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 3s cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+
+.roulette-wheel.spinning {
+  transform: rotate(1800deg);
+}
+
+.roulette-slice {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: 0 100%;
+  width: 150px;
+  height: 150px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background-color: transparent;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+
+.roulette-slice span {
+  transform: rotate(9deg) translateX(-10px) translateY(10px);
+}
+
+.roulette-pointer {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 150px);
+  transform: translateY(-50%);
+  color: #e74c3c;
+  font-size: 3em;
+  z-index: 10;
+}
+
+/* Modal de la pregunta */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#modal-title {
+  color: #34495e;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+#question-text {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #555;
+  min-height: 50px;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.option-item {
+  background-color: #ecf0f1;
+  border: 2px solid #bdc3c7;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.option-item img {
+  max-width: 100%;
+  max-height: 80px;
+}
+
+.option-item.correct {
+  border-color: #27ae60;
+  background-color: #d4f3e3;
+  animation: pulse 0.5s;
+  pointer-events: none;
+}
+
+.option-item.incorrect {
+  border-color: #e74c3c;
+  background-color: #fde8e5;
+  animation: shake 0.5s;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Botones */
+.controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background-color: #ecf0f1;
+  color: #7f8c8d;
+}
+
+.secondary-btn:hover {
+  background-color: #bdc3c7;
+  transform: translateY(-2px);
+}
+
+#feedback-message {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .game-area {
+    grid-template-columns: 1fr;
+  }
+  .roulette-wheel {
+    width: 250px;
+    height: 250px;
+  }
+  .roulette-pointer {
+    left: 50%;
+    top: -20px;
+    transform: translateX(-50%);
+  }
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+  .controls {
+    flex-direction: column;
+  }
+}

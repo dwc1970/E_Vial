@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aventuras Viales - Clasifica la Señal</title>
+    <link rel="stylesheet" href="señal.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1 class="game-title">🚦 Aventuras Viales 🚦</h1>
+
+      <div class="game-info">
+        <h2 class="info-item">Puntaje: <span id="score">0</span></h2>
+        <h2 class="info-item">
+          Pregunta: <span id="question-count">0</span> / 5
+        </h2>
+      </div>
+
+      <div class="game-content">
+        <div id="welcome-message" class="screen-message">
+          <h2>¡Aprende a clasificar las señales viales!</h2>
+          <p>Haz clic en "Comenzar" para iniciar el juego.</p>
+        </div>
+
+        <div class="image-box">
+          <img id="sign-image" src="img/pregunta.png" alt="Señal de tráfico" />
+        </div>
+
+        <div class="categories-container" id="categories-container">
+          <button class="category-btn" data-category="Preventiva">
+            Preventiva
+          </button>
+          <button class="category-btn" data-category="Reglamentaria">
+            Reglamentaria
+          </button>
+          <button class="category-btn" data-category="Informativa">
+            Informativa
+          </button>
+        </div>
+
+        <div id="feedback-message" class="feedback-message"></div>
+      </div>
+
+      <div class="controls">
+        <button id="start-btn" class="control-btn primary-btn">Comenzar</button>
+        <button
+          id="next-btn"
+          class="control-btn primary-btn"
+          style="display: none"
+        >
+          Siguiente
+        </button>
+        <button
+          id="restart-btn"
+          class="control-btn secondary-btn"
+          style="display: none"
+        >
+          Continuar
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const restartBtn = document.getElementById("restart-btn");
+        const scoreElement = document.getElementById("score");
+
+        // Assuming you have a function or a point in your script.js where the score is updated and the button is shown
+        // I will add the event listener to handle the redirect
+        restartBtn.addEventListener("click", () => {
+          const currentScore = parseInt(scoreElement.textContent, 10);
+          if (currentScore >= 100) {
+            window.location.href = "index.html";
+          } else {
+            // Your existing logic for the "Continuar" button goes here.
+            // For example, reloading the page or resetting the game.
+            // location.reload();
+          }
+        });
+      });
+    </script>
+    <script src="señal.js"></script>
+  </body>
+</html>

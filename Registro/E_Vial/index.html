@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="sto.css" />
+  </head>
+  <body>
+    <div id="inicio-container">
+      <img id="imagen-inicio" src="img/01.png" alt="Imagen de Inicio" />
+      <button id="boton-comenzar">Comenzar</button>
+    </div>
+
+    <div id="juegos-container" style="display: none">
+      <div class="juego-item">
+        <img
+          src="img/señales.png"
+          alt="Imagen del Juego 1"
+          class="juego-imagen"
+        />
+        <button
+          class="boton-juego"
+          onclick="window.location.href='coincidencia.html'"
+        >
+          Juego 1
+        </button>
+      </div>
+
+      <div class="juego-item">
+        <img src="img/aven.png" alt="Imagen del Juego 2" class="juego-imagen" />
+        <button class="boton-juego" onclick="window.location.href='señal.html'">
+          Juego 2
+        </button>
+      </div>
+
+      <div class="juego-item">
+        <img
+          src="img/ruleta.png"
+          alt="Imagen del Juego 3"
+          class="juego-imagen"
+        />
+        <button
+          class="boton-juego"
+          onclick="window.location.href='ruleta.html'"
+        >
+          Juego 3
+        </button>
+      </div>
+    </div>
+
+    <script src="scripto.js"></script>
+  </body>
+</html>

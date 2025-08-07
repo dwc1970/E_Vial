@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Señales de Tráfico</title>
+    <link rel="stylesheet" href="juego_viales.css" />
+    <style>
+      /* Estilos adicionales para el nuevo juego de unir con flechas */
+      .game-board {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+      }
+
+      .signs-column,
+      .categories-column {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .sign-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        min-height: 80px;
+      }
+
+      .category-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        font-weight: bold;
+        text-align: center;
+        min-height: 80px;
+      }
+
+      .sign-item.selected,
+      .category-item.selected {
+        border-color: #2196f3;
+        box-shadow: 0 0 5px #2196f3;
+        transform: scale(1.05);
+      }
+
+      .sign-item.correct,
+      .category-item.correct {
+        border-color: #4caf50;
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        pointer-events: none;
+        cursor: default;
+      }
+
+      .sign-item.incorrect,
+      .category-item.incorrect {
+        border-color: #f44336;
+        background-color: #ffebee;
+        color: #b71c1c;
+        animation: shake 0.5s;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1 id="welcome-message">¡Bienvenido al Juego de Unir con Flechas!</h1>
+      <div class="score-container">
+        <p>Puntuación: <span id="score">0</span>/100</p>
+        <p>Aciertos: <span id="correct-matches">0</span>/10</p>
+      </div>
+      <div class="game-area">
+        <div class="game-board" id="game-board"></div>
+        <p id="feedback-message"></p>
+      </div>
+      <div class="controls">
+        <button id="start-btn" class="primary-btn">Comenzar</button>
+        <button id="restart-btn" class="secondary-btn" style="display: none">
+          Reiniciar
+        </button>
+        <button id="finish-btn" class="primary-btn" style="display: none">
+          Continuar
+        </button>
+      </div>
+    </div>
+    <script src="señales.js"></script>
+  </body>
+</html>

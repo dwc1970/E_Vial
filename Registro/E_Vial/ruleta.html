@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruleta de Señales Viales</title>
+    <link rel="stylesheet" href="ruleta.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <h1 id="welcome-message">¡Gira la Ruleta!</h1>
+        <div class="score-container">
+          <p>Puntuación: <span id="score">0</span></p>
+          <p>Aciertos: <span id="correct-matches">0</span></p>
+        </div>
+      </div>
+
+      <div class="game-area">
+        <div id="roulette-section">
+          <div class="roulette-wheel"></div>
+          <div class="roulette-pointer">▼</div>
+          <button id="spin-btn" class="primary-btn">Girar</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="restart-btn" class="secondary-btn" style="display: none">
+          Reiniciar
+        </button>
+        <button id="finish-btn" class="primary-btn" style="display: none">
+          Terminar
+        </button>
+        <button id="continue-btn" class="secondary-btn" style="display: none">
+          Continuar
+        </button>
+        <button
+          id="exit-btn"
+          class="secondary-btn"
+          style="display: none"
+          onclick="window.location.href='index.html'"
+        >
+          Salir
+        </button>
+      </div>
+    </div>
+
+    <div id="question-modal" class="modal">
+      <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <p id="question-text"></p>
+        <div id="options-container" class="options-container"></div>
+        <p id="feedback-message"></p>
+      </div>
+    </div>
+
+    <script src="ruleta.js"></script>
+  </body>
+</html>

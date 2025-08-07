@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego Educ_Vial Esc-Manos Solidarias</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Estilos para la pantalla de inicio */
+      #splash-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 1; /* Opacidad inicial */
+        transition: opacity 3s ease-in-out; /* Transición para el desvanecimiento */
+      }
+
+      #splash-screen.hidden {
+        opacity: 0; /* Oculta la pantalla */
+      }
+
+      #splash-screen img {
+        max-width: 80%;
+        max-height: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="splash-screen">
+      <img src="img/manos.png" alt="Imagen de inicio" />
+    </div>
+
+    <div class="game-container">
+      <h1>Juego de Señales Viales</h1>
+      <div class="score-board">
+        <h2>Puntaje: <span id="score">0</span></h2>
+      </div>
+      <div class="game-board" id="game-board"></div>
+      <div class="controls">
+        <button id="start-btn">Comenzar</button>
+        <button id="restart-btn" style="display: none">Reiniciar</button>
+        <button id="finish-btn" style="display: none">Terminar</button>
+        <button id="continue-btn" style="display: none">Continuar</button>
+      </div>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <img id="modal-image" src="" alt="Señal de tráfico" />
+        <p id="modal-description"></p>
+        <button id="modal-continue-btn" class="btn-black">Continuar</button>
+      </div>
+    </div>
+
+    <script>
+      const splashScreen = document.getElementById("splash-screen");
+
+      // La imagen se muestra por 3 segundos.
+      setTimeout(() => {
+        // Después de 3 segundos, se agrega la clase 'hidden' para desvanecer la pantalla.
+        splashScreen.classList.add("hidden");
+
+        // Después de que el desvanecimiento de 3 segundos termine, se oculta completamente.
+        // Esto permite que el juego comience sin problemas.
+        setTimeout(() => {
+          splashScreen.style.display = "none";
+        }, 3000);
+      }, 3000); // Muestra la imagen por 3 segundos.
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const finishBtn = document.getElementById("finish-btn");
+        const continueBtn = document.getElementById("continue-btn");
+
+        if (finishBtn) {
+          finishBtn.addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
+        }
+
+        if (continueBtn) {
+          continueBtn.addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
